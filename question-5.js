@@ -17,5 +17,24 @@ const products = [
   },
 ];
 
-const promotionCode = "";
-// เริ่มเขียนโค้ดตรงนี้
+const promotionCode = "SALE50";
+
+const calculateTotalPrice = (products,promotionCode) =>{
+    let totalPrice = 0
+    let discountPrice = 0
+    for (let productArr of products){
+      totalPrice += productArr["price"] * productArr["quantity"] 
+    }
+
+    if (promotionCode === "SALE50"){
+        discountPrice = totalPrice - (totalPrice*0.5)
+    }else if (promotionCode === "SALE20"){
+        discountPrice = totalPrice - (totalPrice*0.2)
+    }else{
+        discountPrice = totalPrice
+    }
+
+    return discountPrice
+}
+
+console.log(calculateTotalPrice(products,promotionCode))
